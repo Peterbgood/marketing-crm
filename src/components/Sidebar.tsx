@@ -1,25 +1,33 @@
-export default function Sidebar() {
+interface SidebarProps {
+  currentView: string;
+  setView: (view: string) => void;
+}
+
+export default function Sidebar({ currentView, setView }: SidebarProps) {
   const menuItems = [
     { name: 'Dashboard', icon: '📊' },
-    { name: 'Pipeline', icon: '🛣️', active: true },
+    { name: 'Pipeline', icon: '🛣️' },
     { name: 'Contacts', icon: '👥' },
-    { name: 'Tasks', icon: '✅' },
     { name: 'Settings', icon: '⚙️' },
   ];
 
   return (
-    <aside className="w-64 bg-slate-900 text-slate-400 flex flex-col hidden md:flex shrink-0">
-      <div className="p-6 text-white font-bold text-xl flex items-center gap-3">
-        <div className="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center shadow-lg shadow-brand-500/40">N</div>
+    <aside className="w-64 bg-slate-900 text-slate-400 flex flex-col p-4 shrink-0">
+      <div className="p-4 text-white font-bold text-xl flex items-center gap-3 mb-8">
+        <div className="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">N</div>
         NexusCRM
       </div>
       
-      <nav className="flex-1 px-4 space-y-1 mt-4">
+      <nav className="flex-1 space-y-2">
         {menuItems.map((item) => (
           <button
             key={item.name}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
-              item.active ? 'bg-brand-600 text-white shadow-lg shadow-brand-600/20' : 'hover:bg-slate-800 hover:text-slate-200'
+            // THIS LINE IS THE FIX: It tells App.tsx to change the view
+            onClick={() => setView(item.name)} 
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all cursor-pointer ${
+              currentView === item.name 
+                ? 'bg-brand-600 text-white shadow-lg shadow-brand-600/20' 
+                : 'hover:bg-slate-800 hover:text-slate-200'
             }`}
           >
             <span className="text-lg">{item.icon}</span>
@@ -28,14 +36,8 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <div className="p-4 border-t border-slate-800">
-        <div className="flex items-center gap-3 p-2 bg-slate-800/50 rounded-xl">
-          <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold">PG</div>
-          <div className="overflow-hidden">
-            <p className="text-sm font-medium text-white truncate">Peter Good</p>
-            <p className="text-xs text-slate-500 truncate">peterbgood@crm.com</p>
-          </div>
-        </div>
+      <div className="pt-4 border-t border-slate-800 text-[10px] text-center uppercase tracking-widest text-slate-600">
+        v1.0.2 - Local Storage
       </div>
     </aside>
   );
