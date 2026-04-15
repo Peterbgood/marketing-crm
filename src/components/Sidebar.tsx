@@ -4,10 +4,10 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ currentView, setView }: SidebarProps) {
+  // These names must match the strings in App.tsx perfectly
   const menuItems = [
     { name: 'Dashboard', icon: '📊' },
     { name: 'Pipeline', icon: '🛣️' },
-    { name: 'Contacts', icon: '👥' },
     { name: 'Settings', icon: '⚙️' },
   ];
 
@@ -22,11 +22,10 @@ export default function Sidebar({ currentView, setView }: SidebarProps) {
         {menuItems.map((item) => (
           <button
             key={item.name}
-            // THIS LINE IS THE FIX: It tells App.tsx to change the view
             onClick={() => setView(item.name)} 
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all cursor-pointer ${
               currentView === item.name 
-                ? 'bg-brand-600 text-white shadow-lg shadow-brand-600/20' 
+                ? 'bg-brand-600 text-white shadow-lg' 
                 : 'hover:bg-slate-800 hover:text-slate-200'
             }`}
           >
@@ -35,9 +34,10 @@ export default function Sidebar({ currentView, setView }: SidebarProps) {
           </button>
         ))}
       </nav>
-
-      <div className="pt-4 border-t border-slate-800 text-[10px] text-center uppercase tracking-widest text-slate-600">
-        v1.0.2 - Local Storage
+      
+      <div className="p-4 bg-slate-800/50 rounded-xl">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Database</p>
+        <p className="text-xs text-slate-300 font-medium">Local Browser</p>
       </div>
     </aside>
   );
