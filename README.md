@@ -1,73 +1,28 @@
-# React + TypeScript + Vite
+# Nexus CRM: Pipeline Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive Sales CRM interface designed for high-velocity deal tracking. This project focuses on a clean developer experience using **Tailwind CSS v4** and a modular **React component architecture**.
 
-Currently, two official plugins are available:
+🚀 **[View Live Demo](https://peterbgood.github.io/marketing-crm/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tech Stack
+* **React 18** (TypeScript)
+* **Vite** (Next-gen frontend tooling)
+* **Tailwind CSS v4** (Using the new @theme engine)
+* **GitHub Actions** (Automated CI/CD Pipeline)
 
-## React Compiler
+## ✨ Key Features
+* **Kanban Pipeline:** Dynamic deal stages (Discovery, Qualification, etc.) with automated deal counting.
+* **Type Safety:** Robust TypeScript interfaces for Deal data and Stage management.
+* **Modular Architecture:** Separated concerns across `Sidebar`, `Header`, `KanbanBoard`, and `DealCard` components.
+* **Automated Deployment:** Fully configured GitHub Actions workflow that builds and deploys to GitHub Pages on every push to `main`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📂 Project Structure
+```bash
+src/
+├── components/
+│   ├── Sidebar.tsx      # Sidebar navigation with active states
+│   ├── Header.tsx       # Search and action bar
+│   ├── KanbanBoard.tsx  # Stage logic and column mapping
+│   └── DealCard.tsx     # Reusable deal visualization
+├── App.tsx              # Main layout shell
+└── index.css            # Tailwind v4 configuration & theme variables
