@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  /* High-end CRM color palette */
+  --color-brand-50: #eff6ff;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  
+  --radius-card: 0.75rem;
+}
+
+/* Custom scrollbar for the Kanban board */
+.pipeline-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.pipeline-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.pipeline-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
